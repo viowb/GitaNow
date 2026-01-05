@@ -1,0 +1,32 @@
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './tests',
+
+  use: {
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
+
+  projects: [
+    {
+      name: 'dev',
+      use: {
+        baseURL: 'https://dev.example.com',
+      },
+    },
+    {
+      name: 'staging',
+      use: {
+        baseURL: 'https://staging.example.com',
+      },
+    },
+    {
+      name: 'prod',
+      use: {
+        baseURL: 'https://prod.example.com',
+      },
+    },
+  ],
+});
